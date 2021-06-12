@@ -1,0 +1,35 @@
+{
+	"name": "@sudoo/jwt-config",
+	"version": "1.0.0",
+	"description": "JWT Config",
+	"repository": {
+		"type": "git",
+		"url": "git+https://github.com/SudoDotDog/Sudoo-JWT-Config.git"
+	},
+	"author": "WMXPY",
+	"license": "MIT",
+	"bugs": {
+		"url": "https://github.com/SudoDotDog/Sudoo-JWT-Config/issues"
+	},
+	"homepage": "https://github.com/SudoDotDog/Sudoo-JWT-Config#readme",
+	"devDependencies": {
+		"@sudoo/io": "^1.8.0",
+		"@sudoo/triforce": "^2.9.26"
+	},
+	"nyc": {
+		"extension": [
+			".ts"
+		],
+		"include": [
+			"script/**/*.ts",
+			"src/**/*.ts"
+		],
+		"instrument": true,
+		"reporter": [
+			"json",
+			"text-summary"
+		],
+		"report-dir": "coverage",
+		"sourceMap": true
+	}
+}
