@@ -1,2 +1,3 @@
 # Sudoo-JWT-Config
-:ocean: JWT Config
+
+JWT Config
