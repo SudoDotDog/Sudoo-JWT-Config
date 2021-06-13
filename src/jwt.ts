@@ -4,23 +4,8 @@
  * @description JWT
  */
 
-import { JWTFixedHeader, JWTOptionalHeader, OptionalVerbalHeaders, TokenTuple } from "./declare";
+import { JWTFixedHeader, JWTOptionalHeader, OptionalVerbalHeaders } from "./declare";
 import { fixNowDate, fixUndefinableDate } from "./util";
-
-export const deconstructJWT = (token: string): TokenTuple => {
-
-    const tuple: TokenTuple = token.split('.') as TokenTuple;
-
-    return tuple;
-};
-
-export const verifyTokenPatternByTuple = (tuple: TokenTuple): boolean => {
-
-    if (tuple.length !== 3) {
-        return false;
-    }
-    return true;
-};
 
 export const extractJWTVerbalHeader = (verbalHeader: OptionalVerbalHeaders): JWTOptionalHeader => {
 
