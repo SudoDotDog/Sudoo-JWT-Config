@@ -4,7 +4,7 @@
  * @description JWT
  */
 
-import { JWTOptionalHeader, OptionalVerbalHeaders } from "./declare";
+import { JWTFixedHeader, JWTOptionalHeader, OptionalVerbalHeaders } from "./declare";
 import { fixNowDate, fixUndefinableDate } from "./util";
 
 export const extractJWTVerbalHeader = (verbalHeader: OptionalVerbalHeaders): JWTOptionalHeader => {
@@ -22,4 +22,26 @@ export const extractJWTVerbalHeader = (verbalHeader: OptionalVerbalHeaders): JWT
     };
 
     return optionalHeaders;
+};
+
+export const extractJWTFixedHeader = (verbalHeader: OptionalVerbalHeaders): JWTFixedHeader => {
+
+    const optionalHeaders: JWTOptionalHeader = extractJWTVerbalHeader(verbalHeader);
+
+    const keys: Array<keyof JWTOptionalHeader> = Object.keys(optionalHeaders) as Array<keyof JWTOptionalHeader>;
+    const fixedHeaders: JWTFixedHeader = keys.reduce((previous: JWTFixedHeader, currentKey: keyof JWTOptionalHeader) => {
+
+        if (typeof optionalHeaders[currentKey] !== 'undefined') {
+            return {
+                ...previous,
+                [currentKey]: optionalHeaders[currentKey],
+            };
+        }
+        return previous;
+    }, {
+        alg: 'RS256',
+        typ: 'JWT',
+    });
+
+    return fixedHeaders;
 };
