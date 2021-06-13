@@ -58,5 +58,4 @@ export type TokenContentStructure = {
 
     readonly header: string;
     readonly body: string;
-    readonly signature: string;
 };

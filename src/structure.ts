@@ -4,7 +4,7 @@
  * @description Structure
  */
 
-import { TokenStructure, TokenTuple } from "./declare";
+import { TokenContentStructure, TokenContentTuple, TokenStructure, TokenTuple } from "./declare";
 
 export const deconstructJWTOrNull = (token: string): TokenTuple | null => {
 
@@ -58,7 +58,27 @@ export const structureJWTByTuple = (tuple: TokenTuple): TokenStructure => {
     };
 };
 
+export const structureContentByContentTuple = (tuple: TokenContentTuple): TokenContentStructure => {
+
+
+    const serializedHeader: string = tuple[0];
+    const serializedBody: string = tuple[1];
+
+    return {
+        header: serializedHeader,
+        body: serializedBody,
+    };
+};
+
 export const formatEncryptedContentByStructure = (structure: TokenStructure): string => {
+
+    return [
+        structure.header,
+        structure.body,
+    ].join('.');
+};
+
+export const formatEncryptedContentByContentStructure = (structure: TokenContentStructure): string => {
 
     return [
         structure.header,
@@ -79,6 +99,12 @@ export const formatEncryptedContentByTuple = (tuple: TokenTuple): string => {
 
     const structure: TokenStructure = structureJWTByTuple(tuple);
     return formatEncryptedContentByStructure(structure);
+};
+
+export const formatEncryptedContentByContentTuple = (tuple: TokenContentTuple): string => {
+
+    const structure: TokenContentStructure = structureContentByContentTuple(tuple);
+    return formatEncryptedContentByContentStructure(structure);
 };
 
 export const formatTokenByTuple = (tuple: TokenTuple): string => {
