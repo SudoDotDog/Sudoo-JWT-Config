@@ -58,12 +58,31 @@ export const structureJWTByTuple = (tuple: TokenTuple): TokenStructure => {
     };
 };
 
-export const extractEncryptedContentByTuple = (tuple: TokenTuple): string => {
-
-    const structure: TokenStructure = structureJWTByTuple(tuple);
+export const formatEncryptedContentByStructure = (structure: TokenStructure): string => {
 
     return [
         structure.header,
         structure.body,
     ].join('.');
+};
+
+export const formatTokenByStructure = (structure: TokenStructure): string => {
+
+    return [
+        structure.header,
+        structure.body,
+        structure.signature,
+    ].join('.');
+};
+
+export const formatEncryptedContentByTuple = (tuple: TokenTuple): string => {
+
+    const structure: TokenStructure = structureJWTByTuple(tuple);
+    return formatEncryptedContentByStructure(structure);
+};
+
+export const formatTokenByTuple = (tuple: TokenTuple): string => {
+
+    const structure: TokenStructure = structureJWTByTuple(tuple);
+    return formatTokenByStructure(structure);
 };
