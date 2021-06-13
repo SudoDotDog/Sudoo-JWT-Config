@@ -38,3 +38,10 @@ export type OptionalVerbalHeaders = {
 export type JWTJoinedHeader<Header extends Record<string, any>> = Header & JWTFixedHeader;
 
 export type TokenTuple = [string, string, string];
+
+export type TokenStructure = {
+
+    readonly header: string;
+    readonly body: string;
+    readonly signature: string;
+};
