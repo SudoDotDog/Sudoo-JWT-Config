@@ -1,17 +1,18 @@
 /**
  * @author WMXPY
  * @namespace JWTConfig
- * @description Structure
+ * @description Util
  * @package Unit Test
  */
 
 import { expect } from 'chai';
 import * as Chance from 'chance';
-import { deconstructJWTOrNull, TokenTuple } from '../../src';
+import { TokenTuple } from '../../src/declare';
+import { deconstructJWTOrNull } from '../../src/structure';
 
-describe('Given [Structure] Helper functions', (): void => {
+describe('Given [Util] Helper functions', (): void => {
 
-    const chance: Chance.Chance = new Chance('jwt-config-structure');
+    const chance: Chance.Chance = new Chance('jwt-config-util');
 
     it('should be able to deconstruct JWT', (): void => {
 
