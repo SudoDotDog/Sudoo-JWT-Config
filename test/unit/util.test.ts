@@ -7,34 +7,18 @@
 
 import { expect } from 'chai';
 import * as Chance from 'chance';
-import { TokenTuple } from '../../src/declare';
-import { deconstructJWTOrNull } from '../../src/structure';
+import { convertJSTimeToUnixTime } from '../../src';
 
 describe('Given [Util] Helper functions', (): void => {
 
     const chance: Chance.Chance = new Chance('jwt-config-util');
 
-    it('should be able to deconstruct JWT', (): void => {
+    it('should be able to convert js time to unix time', (): void => {
 
-        const header: string = chance.string();
-        const body: string = chance.string();
-        const signature: string = chance.string();
+        const jsTime: number = 1000; // 1 second
 
-        const token: string = `${header}.${body}.${signature}`;
-        const tuple: TokenTuple | null = deconstructJWTOrNull(token);
+        const result: number = convertJSTimeToUnixTime(jsTime);
 
-        expect(tuple).to.be.deep.equal([
-            header,
-            body,
-            signature,
-        ]);
-    });
-
-    it('should be able to deconstruct JWT - sad path', (): void => {
-
-        const token: string = chance.string();
-        const tuple: TokenTuple | null = deconstructJWTOrNull(token);
-
-        expect(tuple).to.be.equal(null);
+        expect(result).to.be.equal(1);
     });
 });
