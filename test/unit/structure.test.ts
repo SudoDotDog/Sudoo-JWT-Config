@@ -29,4 +29,12 @@ describe('Given [Structure] Helper functions', (): void => {
             signature,
         ]);
     });
+
+    it('should be able to deconstruct JWT - sad path', (): void => {
+
+        const token: string = chance.string();
+        const tuple: TokenTuple | null = deconstructJWTOrNull(token);
+
+        expect(tuple).to.be.equal(null);
+    });
 });
