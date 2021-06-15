@@ -26,6 +26,6 @@ describe('Given [Util] Helper functions', (): void => {
         const target: Date = chance.date();
         const fixed: number | undefined = fixUndefinableDate(target);
 
-        expect(fixed).to.be.equal(target);
+        expect(fixed).to.be.equal(convertJSTimeToUnixTime(target.getTime()));
     });
 });
