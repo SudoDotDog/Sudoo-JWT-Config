@@ -14,7 +14,12 @@ export const convertJSTimeToUnixTime = (jsTime: number): number => {
 
 export const getCurrentUnixTime = (): number => {
 
-    return convertJSTimeToUnixTime(Date.now());
+    return parseUnixTime(new Date());
+};
+
+export const parseUnixTime = (target: Date): number => {
+
+    return convertJSTimeToUnixTime(target.getTime());
 };
 
 export const fixUndefinableDate = (target?: Date): number | undefined => {
