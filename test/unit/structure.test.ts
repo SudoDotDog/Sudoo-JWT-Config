@@ -1,16 +1,16 @@
 /**
  * @author WMXPY
  * @namespace JWTConfig
- * @description Placeholder
+ * @description Structure
  * @package Unit Test
  */
 
 import { expect } from 'chai';
 import * as Chance from 'chance';
 
-describe('Given Placeholder', (): void => {
+describe('Given [Structure] Helper functions', (): void => {
 
-    const chance: Chance.Chance = new Chance('placeholder');
+    const chance: Chance.Chance = new Chance('jwt-config-structure');
 
     it('placeholder', (): void => {
 
