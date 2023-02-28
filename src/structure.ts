@@ -46,7 +46,6 @@ export const verifyTokenPatternByTuple = (tuple: TokenTuple): boolean => {
 
 export const structureJWTByTuple = (tuple: TokenTuple): TokenStructure => {
 
-
     const serializedHeader: string = tuple[0];
     const serializedBody: string = tuple[1];
     const signature: string = tuple[2];
@@ -59,7 +58,6 @@ export const structureJWTByTuple = (tuple: TokenTuple): TokenStructure => {
 };
 
 export const structureContentByContentTuple = (tuple: TokenContentTuple): TokenContentStructure => {
-
 
     const serializedHeader: string = tuple[0];
     const serializedBody: string = tuple[1];

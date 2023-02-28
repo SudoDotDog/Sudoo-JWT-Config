@@ -9,6 +9,7 @@ export type JWTOptionalHeader = {
     readonly aud?: string; // Audience
     readonly exp?: number; // Expiration Time
     readonly jti?: string; // JWT ID
+    readonly kty?: string; // Key Type
     readonly iat?: number; // Issued At
     readonly iss?: string; // Issuer
     readonly nbf?: number; // Not Before
@@ -30,6 +31,7 @@ export type OptionalVerbalHeaders = {
 
     readonly audience?: string;
     readonly identifier?: string;
+    readonly keyType?: string;
     readonly issuer?: string;
     readonly subject?: string;
     readonly version?: string;

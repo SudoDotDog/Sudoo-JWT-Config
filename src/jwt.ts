@@ -14,6 +14,7 @@ export const extractJWTVerbalHeader = (verbalHeader: OptionalVerbalHeaders): JWT
         aud: verbalHeader.audience,
         exp: fixUndefinableDate(verbalHeader.expirationAt),
         jti: verbalHeader.identifier,
+        kty: verbalHeader.keyType,
         iat: fixNowDate(verbalHeader.issuedAt),
         iss: verbalHeader.issuer,
         nbf: fixUndefinableDate(verbalHeader.availableAt),
